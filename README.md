@@ -47,7 +47,7 @@ The app will be accessible at http://localhost:4100.
 run node index.js 
 
 5.Usage
-Open your web browser and navigate to http://localhost:3000.
+Open your web browser and navigate to http://localhost:4100.
 Explore the various features, sign up, and start tracking cryptocurrencies!
 
 6.Contributing
