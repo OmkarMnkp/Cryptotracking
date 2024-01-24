@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRYPTOTRACKING</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <!-- NAVBAR -->
+        <nav>
+            <img src="./icons/bitcoin.png" alt="CryptoTracking Logo">
+            <h3 >CRYPTOTRACKING</h3>
+    
+            <a href="#wrapper" class="nav-link" >Portfolio</a>
+            <a onclick="openPopup()" class="nav-link">Converter</a>
+            <a href="#graph" class="nav-link" >Graph</a>
+            <a href="#" class="sign-up-button" onclick="openSignUpModal()" class="nav-link">Sign Up</a>
+        </nav>
+    </header>
+
+    <!-- 2 DIVS RIGHT AND LEFT -->
+
+    <!-- LIVE COIN DISPLAY -->
+    <section>
+
+        <!-- LEFT-SECTION -->
+
+        <div class="left-section">
+            <div class="card">
+                <h2 id="cryptohead" class="head">Real-Time Crypto Prices</h2>
+                <p>Stay Updated with Live Market Rates</p>
+                
+
+                <!-- CRYPTO-TABLE (for showing live prices) -->
+                <table id="cryptoTable">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Symbol</th>
+                            <th>Currency</th>
+                            <th>Price(USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- RIGHT-SECTION -->
+
+        <div class="right-section">
+            <img id="img1" src="./images/marketplace (1).png" alt="" srcset="">
+            <img id="img2" src="./images/analysis.png" alt="">
+        </div>
+    </section>
+
+    <!-- BOTTOM-SECTION -->
+
+    <div id="graph" class="bottom-section">
+        <img id="img3" src="./images/financial-planning.png" alt="" srcset="">
+        <img id="img4" src="./images/profit.png" alt="">
+
+
+        <!-- VIEW CRYPTOCURRENCY GRAPH -->
+
+        <!-- CARD-SECTION -->
+        <div class="card">
+            <h2 id="cryptohead2">Crypto Price Trends Over 5 Months</h2>
+            <p>Explore Crypto Performance with Interactive Graphs.</p>
+            <input type="text" placeholder="Enter CryptoCurrency." id="crypto-input" />
+            <button type="submit" class="searchBtn">Search</button>
+
+            <!-- CREATED-DIV -->
+            <div id="graph-container">
+                <!-- This is where the  created graphDiv will be appended -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SIGNUP MODEL POPUP -->
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <h2>SIGN UP/REGESTER</h2>
+            <span class="close-button" onclick="closeSignUpModal()">&times;</span>
+            <!-- SIGN-UP FORM -->
+            <!-- user input data and stroing in database -->
+            <form class="signUpForm" action="sign_up"  method="post">
+                <label id="label-signup" for="username" >Username:</label>
+                <input type="text" name="username" id="username" class="form_input" placeholder="Enter Username.">
+
+                <label id="label-signup" for="email">Email:</label>
+                <input type="email" name="email" id="email" class="form_input" placeholder="Enter Email.">
+
+                <label id="label-signup" for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form_input" placeholder="Enter Password.">
+
+                <label id="label-signup" for="confirmPassword">Confirm Password:</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" class="form_input"
+                    placeholder="Confirm Password.">
+
+                <button id="form_button" type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CURRENCY CONVERTER POPUP -->
+    <div class="popup-container" id="popup">
+        <span class="close-btn" onclick="closePopup()">x</span>
+        <div class="img-container">
+            <h2>CURRENCY CONVERTER</h2>
+            <img src="./images/exchange.png" alt="Image" class="popup-image">
+        </div>
+
+        <!-- RIGHT-CONATINER -->
+
+        <form action="/converter" method="post" id="converter-form">
+            <div class="right-container">
+                <label for="amount">Amount:</label>
+                <input name="amount"  type="number" id="amount" placeholder="Enter amount.">
+                <label for="currency">Currency1:</label>
+                <input name="currency" type="text" id="currency" placeholder="Enter First Currency. ">
+                <label for="cryptoCurrency">Currency2:</label>
+                <input name="cryptoCurrency" type="text" id="cryptoCurrency" placeholder="Enter Second Currency.">
+                <div class="button-container">
+                    <button id="convert-btn" onclick="convert()">CONVERT</button>
+                </div>
+                <div name="result" id="result"></div>
+            </div>
+        </form>
+        
+    </div>
+
+
+<!-- PORTFOLIO SECTION -->
+    <div id="wrapper">
+        <div id="left-container">
+            <div id="main-container">
+                <div id="form-container">
+                    <div id="portfolio-form">
+                        
+                        <h2 id="cryptohead2">Let's Create A Portfolio.</h2>
+                        <p>Track and Manage Your Investments with Ease.</p>
+
+                        <form action="/portfolio" method="post" id="crypto-form">
+                            
+                            <label id="portlabel" for="crypto-name">CRYPTOCURRENCY:</label>
+                            <input id="portinput" type="text" id="cryptoName" name="cryptoname" required placeholder="Enter Cryptocurrency Name.">
+
+                            <label id="portlabel" for="quantity">QUANTITY:</label>
+                            <input id="portinput" type="number" id="quantity" name="quantity" required placeholder="Enter Quantity.">
+
+                            <label id="portlabel" for="purchase-price">PURCHASE PRICE:</label>
+                            <input id="portinput" type="number" id="purchasePrice" name="purchasePrice" required placeholder="Enter Purchase Price.">
+
+                            <label id="portlabel" for="date-acquisition">DATE:</label>
+                            <input id="portinput" type="date" id="dateAcquisition" name="dateAcquisition" required placeholder="Enter Date.">
+
+                            <button type="submit" id="add-btn" onclick="addCrypto()">Create</button>
+                        </form>
+                    </div>
+                    <div id="message-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="right-container">
+            <div class="header-content">
+                <img id="img" src="./images/self-learning.png" alt="" srcset="">
+                <img id="img" src="./images/digital-library.png" alt="">  
+            </div>
+          
+        </div>
+    </div>
+
+    <!-- MAIN-FOOTER -->
+    <footer>
+        <img src="./footer_images/monitoring (1).png" alt="Bottom Image 1" class="footer-image">
+        <img src="./footer_images/monitoring.png" alt="Bottom Image 2" class="footer-image">
+        <div class="social-links">
+            <a href="#" target="_blank" class="social-link"><img src="./footer_images/instagram.png" alt="Instagram"></a>
+            <a href="#" target="_blank" class="social-link"><img src="./footer_images/facebook.png" alt="Facebook"></a>
+            <a href="#" target="_blank" class="social-link"><img src="./footer_images/linkedin.png" alt="LinkedIn"></a>
+        </div>    
+        <p>&copy; 2023 CRYPTOTRACKING. All rights reserved.</p>    
+    </footer>
+  
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
